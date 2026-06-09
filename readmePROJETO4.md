@@ -18,9 +18,111 @@ O coração do projeto está presente nas seguintes classes já definidas:
 
 Para compilar o código, no arquivo `main.cpp` dentro da pasta com todos os outros arquivos, eu realizei meus testes do código com a seguinte inclusão no cabeçalho:
 
-```cpp
+```
 #include <iostream>
 #include <vector>
 #include "Trie.hpp"
 #include "GamesDatabase.hpp"
 #include "lista_encadeada.hpp"
+```
+
+  
+
+Para que o código fosse compilado, utilize o seguinte código no terminal do `main.cpp` :
+```
+g++ main.cpp Game.cpp Trie.cpp GamesDatabase.cpp lista_encadeada.cpp -o app
+```
+
+* ##### g++: Compilador padrão de C++ .
+
+* ##### main.cpp: Arquivo principal que inicializa a árvore e roda os testes.
+
+* ##### Game.cpp Trie.cpp lista_encadeada.cpp GamesDatabase.cpp:  Arquivos que guardam toda a lógica do sistema e a base de dados.
+
+* ##### -o: Sinalizador do sistema (output).
+
+* ##### app: É o arquivo executável do main.cpp que nasce após todo o processo.
+
+  
+## Instruções de Execução
+
+  
+Por fim, para imprimir os resultados, o programa exige que você passe os argumentos direto na linha de comando (onde `k` é o número limite de resultados e `"prefixo"` é a busca). Utilize o seguinte comando no terminal:
+
+
+
+`Windows`:
+
+```
+.\app.exe k "prefixo"
+```
+
+ 
+`Linux/Mac`:
+
+```
+./app k "prefixo"
+```
+
+## Divisão dos arquivos na pasta do projeto
+
+* `Game.hpp` Armazena toda estrutura da classe Game, com a definição do construtor, destrutor e seus outros métodos.
+  
+
+* `Game.cpp` Define a lógica do que os métodos apresentados no `Game.hpp` devem fazer.
+  
+
+* `Trie.hpp` Armazena toda estrutura da classe Trie e TrieNode, com a definição da árvore, métodos de ordenação e autocomplete.
+  
+
+* `Trie.cpp` Define a lógica do que os métodos apresentados no `Trie.hpp` devem fazer.
+
+
+* `lista_encadeada.hpp` / `lista_encadeada.cpp` Definem a estrutura da Fila baseada em nós usada para varrer a árvore na busca por largura.
+
+
+* `GamesDatabase.hpp` / `GamesDatabase.cpp` Base de dados fornecida com o catálogo estático de jogos.
+
+  
+* `main.cpp` Executa o driver code.
+  
+
+
+## Breve explicação de como executar os testes
+ 
+Os testes do sistema foram implementados no arquivo `main.cpp` de forma sequencial (conforme o código teste enviado) e exigem a passagem de parâmetros via linha de comando para buscas dinâmicas.
+
+
+### Passo 1: Compilação
+
+Para executar os testes, deve-se compilar todos os arquivos do projeto juntos, com o seguinte comando no terminal:
+
+  
+
+```
+g++ main.cpp Game.cpp Trie.cpp GamesDatabase.cpp lista_encadeada.cpp -o app
+```
+  
+
+### Passo 2: Execução
+Após a compilação gerar o executável, rode o programa passando a quantidade limite de jogos e o prefixo, com o comando:
+
+`Linux/Mac`:
+```
+ ./app 10 "ca"
+```
+ 
+`Windows`: 
+```
+.\app.exe 10 "ca"
+```
+
+Ao rodar o executável, o console imprimirá as seguintes operações baseadas nos testes programados no arquivo principal:
+
+**Carga de Dados:** O sistema inicializa a Trie iterando sobre `numberOfGames` e insere todos os jogos oriundos da base `GamesDatabase.cpp` na árvore de prefixos utilizando ponteiros.
+
+**Busca Exata:** O sistema realiza um teste booleano acionando o método `contains` para verificar se o título exato "Castle Crashers" existe na árvore, imprimindo "Sim" ou "Não".
+
+**Autocomplete e Busca em Largura (BFS):** O sistema executa a busca pelo prefixo designado, desce na estrutura da Trie e utiliza a estrutura da Lista Encadeada para recuperar os jogos válidos na subárvore.
+
+**Ordenação e Relatório Final:** Após armazenar os jogos encontrados em um vetor, o sistema ordena os resultados por popularidade (e ordem alfabética em caso de empate) usando uma adaptação do algoritmo QuickSort, filtrando a quantidade limite `k` e imprimindo a tabela com o Título e a Popularidade de cada jogo encontrado.
