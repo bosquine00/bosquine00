@@ -66,19 +66,19 @@ Por fim, para imprimir os resultados, o programa exige que os argumentos sejam p
 
 ## Divisão dos arquivos na pasta do projeto
 
-* `Game.hpp` Armazena toda estrutura da classe Game, com a definição do construtor, destrutor e seus outros métodos.
+* `Game.hpp` Armazena toda estrutura da classe Game, com a definição do construtor, destrutor e seus métodos de impressão do título, popularidade e descrição.
   
 
 * `Game.cpp` Define a lógica do que os métodos apresentados no `Game.hpp` devem fazer.
   
 
-* `Trie.hpp` Armazena toda estrutura da classe Trie e TrieNode, com a definição da árvore, métodos de ordenação e autocomplete.
+* `Trie.hpp` Armazena toda estrutura da classe Trie e TrieNode, com a definição da árvore, métodos de ordenação, autocomplete, inserção, verificação da existência de um título e etc.
   
 
 * `Trie.cpp` Define a lógica do que os métodos apresentados no `Trie.hpp` devem fazer.
 
 
-* `lista_encadeada.hpp` / `lista_encadeada.cpp` Definem a estrutura da Fila baseada em nós usada para varrer a árvore na busca por largura.
+* `lista_encadeada.hpp` / `lista_encadeada.cpp` Definem a estrutura da Fila baseada em nós usada para varrer a árvore na busca por largura(BFS).
 
 
 * `GamesDatabase.hpp` / `GamesDatabase.cpp` Base de dados fornecida com o catálogo estático de jogos.
