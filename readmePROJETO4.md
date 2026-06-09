@@ -47,7 +47,7 @@ g++ main.cpp Game.cpp Trie.cpp GamesDatabase.cpp lista_encadeada.cpp -o app
 ## Instruções de Execução
 
   
-Por fim, para imprimir os resultados, o programa exige que você passe os argumentos direto na linha de comando (onde `k` é o número limite de resultados e `"prefixo"` é a busca). Utilize o seguinte comando no terminal:
+Por fim, para imprimir os resultados, o programa exige que os argumentos sejam passados direto na linha de comando (onde `k` é o número limite de resultados e `"prefixo"` é a busca). Utiliza-se o seguinte comando no terminal:
 
 
 
