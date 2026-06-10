@@ -126,3 +126,52 @@ Ao rodar o executável, o console imprimirá as seguintes operações baseadas n
 **Autocomplete e Busca em Largura (BFS):** O sistema executa a busca pelo prefixo designado, desce na estrutura da Trie e utiliza a estrutura da Lista Encadeada para recuperar os jogos válidos na subárvore.
 
 **Ordenação e Relatório Final:** Após armazenar os jogos encontrados em um vetor, o sistema ordena os resultados por popularidade (e ordem alfabética em caso de empate) usando uma adaptação do algoritmo QuickSort, filtrando a quantidade limite `k` e imprimindo a tabela com o Título e a Popularidade de cada jogo encontrado.
+
+
+## Exemplos de uso pela linha de comando
+
+O sistema deve sempre receber os argumentos numéricos e textuais de forma estruturada. Caso o prefixo contenha espaços em branco, ele deve obrigatoriamente ser passado entre aspas.
+
+**Exemplo 1: Busca simples (até 3 resultados)**
+```bash
+./app 3 ha
+```
+*Saída esperada:*
+```text
+Busca pelo prefixo ha
+Título | Descrição | Popularidade
+Hades | Roguelike de acao baseado na mitologia grega | 95
+Half Life | FPS classico de ficcao cientifica | 92
+Halo | FPS futurista com campanha e multiplayer | 85
+```
+
+**Exemplo 2: Busca ignorando espaços e case-sensitive**
+```bash
+./app 5 "half l"
+```
+*Saída esperada:*
+```text
+Busca pelo prefixo half l
+Título | Descrição | Popularidade
+Half Life | FPS classico de ficcao cientifica | 92
+```
+
+**Exemplo 3: Busca sem resultados**
+```bash
+./app 3 zelda
+```
+*Saída esperada:*
+```text
+Busca pelo prefixo zelda
+No results found
+```
+
+**Exemplo 4: Chamada incorreta do sistema (falta de argumentos)**
+```bash
+./app 3
+```
+*Saída esperada:*
+```text
+Usage: ./app k prefix
+```
+
